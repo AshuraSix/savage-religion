@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>SICKO – Savage Religion</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="nav-logo">SR</div>
+
+  <div class="nav-toggle" id="navToggle">
+    ☰
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="index.html#shop">SHOP</a></li>
+    <li><a href="#">CONTACTO</a></li>
+  </ul>
+</nav>
+
+  <main class="product-page">
+
+    <div class="product-container">
+
+     <div class="product-image">
+
+  <img id="mainImage" src="img/sicko-zoom.jpg" alt="Remera SICKO">
+
+  <div class="thumbs">
+    <img class="product-thumb" src="img/sicko-front.jpg">
+    <img class="product-thumb" src="img/sicko-back.jpg">
+    <img class="product-thumb" src="img/sicko-zoom.jpg">
+  </div>
+
+</div>
+
+      </div>
+
+      <!-- INFO PRODUCTO -->
+      <div class="product-info">
+
+        <h1>SICKO</h1>
+        <p class="price">$35.000 ARS</p>
+        <p class="description">
+Remera SICKO edición limitada.  
+Estampa frontal y trasera con identidad oscura, rebelde y gótica.  
+Algodón premium, corte regular, diseñada para durar.
+</p>
+        <p class="stock-text">Seleccioná un talle</p>
+
+        <div class="sizes">
+  <button class="size-btn" data-size="S">S</button>
+  <button class="size-btn" data-size="M">M</button>
+  <button class="size-btn" data-size="L">L</button>
+  <button class="size-btn" data-size="XL">XL</button>
+</div>
+
+
+        <!-- COMPRAR -->
+        <button id="buyBtn" disabled>COMPRAR</button>
+
+        <a href="index.html" class="back-btn">← Volver</a>
+        <div class="product-details">
+
+  <h3>Detalles</h3>
+  <p>Remera de edición limitada Savage Religion. Diseño exclusivo con estética oscura y espíritu rebelde.</p>
+
+  <h3>Material</h3>
+  <p>100% algodón premium.</p>
+
+  <h3>Fit</h3>
+  <p>Regular.</p>
+
+</div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- SCRIPT GLOBAL -->
+  <script src="script.js"></script>
+
+<script>
+const mainImage = document.getElementById('mainImage');
+
+mainImage.addEventListener('mousemove', (e) => {
+  const rect = mainImage.getBoundingClientRect();
+  const x = ((e.clientX - rect.left) / rect.width) * 100;
+  const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+  mainImage.style.transformOrigin = `${x}% ${y}%`;
+  mainImage.style.transform = 'scale(1.8)';
+});
+
+mainImage.addEventListener('mouseleave', () => {
+  mainImage.style.transformOrigin = 'center center';
+  mainImage.style.transform = 'scale(1)';
+});
+</script>
+
+<script>
+const zoomOverlay = document.getElementById('zoomOverlay');
+const zoomImg = document.getElementById('zoomImg');
+
+mainImage.addEventListener('click', () => {
+  zoomImg.src = mainImage.src;
+  zoomOverlay.style.display = 'flex';
+});
+
+zoomOverlay.addEventListener('click', () => {
+  zoomOverlay.style.display = 'none';
+});
+</script>
+
+<div id="zoomOverlay">
+  <img id="zoomImg">
+</div>
+
+<!-- FULLSCREEN IMAGE -->
+<div id="fullscreenOverlay">
+  <span id="closeFullscreen">✕</span>
+  <img id="fullscreenImage">
+</div>
+
+</body>
+</html>

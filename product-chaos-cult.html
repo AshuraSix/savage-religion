@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>CHAOS CULT – Savage Religion</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <nav class="navbar">
+  <div class="nav-logo">SR</div>
+
+  <div class="nav-toggle" id="navToggle">
+    ☰
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="index.html#shop">SHOP</a></li>
+    <li><a href="#">CONTACTO</a></li>
+  </ul>
+</nav>
+
+  <main class="product-page">
+
+    <div class="product-container">
+
+      <div class="product-image">
+        <img src="img/sicko.jpg" alt="Remera SICKO">
+      </div>
+
+      <div class="product-info">
+        <h1>CHAOS CULT</h1>
+        <p class="price">$45.000 ARS</p>
+        <p class="stock-text">Seleccioná un talle</p>
+
+       <div class="sizes">
+  <button class="size-btn" data-size="S">S</button>
+  <button class="size-btn" data-size="M">M</button>
+  <button class="size-btn" data-size="L">L</button>
+  <button class="size-btn" data-size="XL">XL</button>
+</div>
+
+        <button id="buyBtn" disabled>COMPRAR</button>
+        <a href="index.html" class="back-btn">← Volver</a>
+
+      </div>
+
+    </div>
+
+  </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const stock = {
+    S: 3,
+    M: 1,
+    L: 5,
+    XL: 5
+  };
+
+  const sizeButtons = document.querySelectorAll('.size-btn');
+  const stockText = document.querySelector('.stock-text');
+  const buyBtn = document.getElementById('buyBtn');
+
+  sizeButtons.forEach(button => {
+    const size = button.dataset.size;
+
+    // Si no hay stock, desactivar
+    if (stock[size] === 0) {
+      button.classList.add('out');
+      button.disabled = true;
+    }
+
+    button.addEventListener('click', () => {
+
+      // Limpiar selección
+      sizeButtons.forEach(btn => btn.classList.remove('active'));
+
+      // Marcar activo
+      button.classList.add('active');
+
+      // Mostrar stock
+      stockText.textContent = `Stock disponible: ${stock[size]} unidades`;
+
+      // Habilitar compra
+      buyBtn.disabled = false;
+    });
+  });
+
+});
+</script>
+
+</body>
+</html>
