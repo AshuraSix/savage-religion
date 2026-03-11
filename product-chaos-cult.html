@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>CHAOS CULT – Savage Religion</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="nav-logo">SAVAGE RELIGION</div>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-link">HOME</a></li>
+    <li><a href="index.html#shop" class="nav-link">SHOP</a></li>
+    <li><a href="#contacto" class="nav-link">CONTACTO</a></li>
+  </ul>
+</nav>
+
+<main class="product-page">
+
+  <div class="product-container">
+
+    <!-- IMÁGENES -->
+    <div class="product-image">
+      <img id="mainImage" src="img/chaos-cult-zoom.jpg" alt="Remera CHAOS CULT">
+
+      <div class="thumbs">
+        <img class="product-thumb" src="img/chaos-cult-front.jpg">
+        <img class="product-thumb" src="img/chaos-cult-back.jpg">
+        <img class="product-thumb" src="img/chaos-cult-zoom.jpg">
+      </div>
+    </div>
+
+    <!-- INFO PRODUCTO -->
+    <div class="product-info">
+
+      <h1>CHAOS CULT</h1>
+      <p class="price">$35.000 ARS</p>
+
+      <p class="description">
+        Remera CHAOS CULT edición limitada.<br>
+        Inspirada en el caos, la rebeldía y la identidad underground.<br>
+        Parte de la colección oscura de Savage Religion.
+      </p>
+
+      <p class="stock-text">Seleccioná un talle</p>
+
+      <!-- TALLES -->
+      <div class="sizes">
+        <button class="size-btn" data-size="S">S</button>
+        <button class="size-btn" data-size="M">M</button>
+        <button class="size-btn" data-size="L">L</button>
+        <button class="size-btn" data-size="XL">XL</button>
+      </div>
+
+      <!-- COMPRAR -->
+      <button id="buyBtn" disabled>COMPRAR</button>
+
+      <a href="index.html" class="back-btn">← Volver</a>
+
+      <!-- DETALLES -->
+      <div class="product-details">
+        <h3>Detalles</h3>
+        <p>Remera CHAOS CULT edición limitada Savage Religion. Diseñada para representar el caos, la libertad y la identidad rebelde.</p>
+
+        <h3>Material</h3>
+        <p>100% algodón premium.</p>
+
+        <h3>Fit</h3>
+        <p>Regular.</p>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- SCRIPT GLOBAL -->
+<script src="script.js"></script>
+
+<!-- ZOOM HOVER -->
+<script>
+const mainImage = document.getElementById('mainImage');
+
+mainImage.addEventListener('mousemove', (e) => {
+  const rect = mainImage.getBoundingClientRect();
+  const x = ((e.clientX - rect.left) / rect.width) * 100;
+  const y = ((e.clientY - rect.top) / rect.height) * 100;
+  mainImage.style.transformOrigin = `${x}% ${y}%`;
+  mainImage.style.transform = 'scale(1.8)';
+});
+
+mainImage.addEventListener('mouseleave', () => {
+  mainImage.style.transform = 'scale(1)';
+});
+</script>
+
+<!-- COMPRAR → WHATSAPP -->
+<script>
+const buyBtn = document.getElementById("buyBtn");
+const sizeButtons = document.querySelectorAll(".size-btn");
+
+let selectedSize = null;
+
+sizeButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    selectedSize = btn.dataset.size;
+  });
+});
+
+buyBtn.addEventListener("click", () => {
+  if (!selectedSize) return;
+
+  const phone = "5491130702721";
+  const message = `Hola! Quiero comprar la remera CHAOS CULT.
+Talle: ${selectedSize}`;
+
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+});
+</script>
+
+</body>
+</html>
